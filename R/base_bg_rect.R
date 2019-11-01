@@ -10,7 +10,7 @@
 #' @param col column containing information on multiplexer chambers
 #' @return a dataframe with the beginning and end of each baseline sampling period
 #' @examples
-#' base_bg_rect(testResp, "Marker")
+#' base_bg_rect(test_resp, "Marker")
 #'
 base_bg_rect <- function(dat, col){
 

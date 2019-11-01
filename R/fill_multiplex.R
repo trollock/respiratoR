@@ -1,4 +1,4 @@
-#' Replaces missing multiplexer channel marker values
+#' Replaces missing multiplexer channel values
 #'
 #' Replaces missing values that are typically from Expedata multiplexer output with
 #' the actual sample channel data.
@@ -9,12 +9,14 @@
 #' @param col column containing the information on multiplexer chambers
 #' @param value The values in the original dataframe that are uninformative e.g.
 #' (-999 or NA) that will be replaced with the actual sampled chamber value for each
-#' row. This accepts single or multiple values e.g. ( -1 or c(-1, -999)).
+#' row. This accepts single or multiple values (see examples below).
 #' @param baseline the value for the baseline channel
 #' @return The original dataframe with formatted and corrected multiplexer channel IDs
 #' @examples
-#' fill_multiplex(testResp, Oxygen, -1, 66)
-fill_multiplex <- function(dat, col, value, baseline){
+#' fill_multiplex(test_resp, Oxygen, -1, 66)
+#' fill_multiple(test_resp, Oxygen, c(-1,-999), 66)
+#'
+fill_multiplex <- function(dat, col, value, base){
   #Change values to NAs
   dat[[col]][dat[[col]] %in% value] <- NA
 
@@ -25,7 +27,7 @@ fill_multiplex <- function(dat, col, value, baseline){
     select("Sample", everything()) %>%
     fill(col)
 
-  dat[[col]][dat[[col]] %in% baseline] <- "Baseline"
+  dat[[col]][dat[[col]] %in% base] <- "Baseline"
 
   return(dat)
 }

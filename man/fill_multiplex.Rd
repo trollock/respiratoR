@@ -2,9 +2,9 @@
 % Please edit documentation in R/fill_multiplex.R
 \name{fill_multiplex}
 \alias{fill_multiplex}
-\title{Replaces missing multiplexer channel marker values}
+\title{Replaces missing multiplexer channel values}
 \usage{
-fill_multiplex(dat, col, value, baseline)
+fill_multiplex(dat, col, value, base)
 }
 \arguments{
 \item{dat}{dataframe containing respirometry data}
@@ -13,7 +13,7 @@ fill_multiplex(dat, col, value, baseline)
 
 \item{value}{The values in the original dataframe that are uninformative e.g.
 (-999 or NA) that will be replaced with the actual sampled chamber value for each
-row. This accepts single or multiple values e.g. ( -1 or c(-1, -999)).}
+row. This accepts single or multiple values (see examples below).}
 
 \item{baseline}{the value for the baseline channel}
 }
@@ -28,5 +28,7 @@ the actual sample channel data.
 This is a generic function:
 }
 \examples{
-fill_multiplex(testResp, Oxygen, -1, 66)
+fill_multiplex(test_resp, Oxygen, -1, 66)
+fill_multiple(test_resp, Oxygen, c(-1,-999), 66)
+
 }
