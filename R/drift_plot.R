@@ -7,7 +7,7 @@
 #'
 #' @param dat dataframe containing spline fits of respirometry data, this is the output from the baseline_corr function
 #' @param dat1 dataframe containing the baseline fit data, this is the output from the base_bg_rect function
-#' @param val the channel being drift correct, e.g. "Oxygen
+#' @param val the channel being drift correct, e.g. "Oxygen"
 #' @return a dataframe containing drift correct oxygen and carbon dioxide data corrected using a
 #' spline fit
 #' @examples
