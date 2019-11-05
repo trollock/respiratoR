@@ -1,8 +1,7 @@
 #' Baseline drift correction via spline interpolation
 #'
-#' Determines the beginning and end of each time the multiplexer measures baseline data.
-#'This is primarily a function for plotting and initial visial exploratory  analysis
-#'of respirometry data.
+#' When provided user defined baseline data, this function corrects for sensor drift using a cubic spline interpolation. It is intended for the
+#' user to compare multiple fits from linear, cubic, and
 #'
 #' This is a generic function:
 #'
@@ -39,8 +38,11 @@ baseline_spl <- function(dat, col, col1, col2, col3){
   dr[[col1]][1] <- 20.950
   dr[[col2]][1] <- 0.065
 
-  dat$O2_spl <- na.spline(dr[[col1]])
-  dat$CO2_spl <- na.spline(dr[[col2]])
+  dat$O2_spl <- spline(dr[[col1]], y = NULL, method = "natural", ties = mean)
+  dat$CO2_spl <- spline(dr[[col2]], y = NULL, method = "natural", ties = mean)
+
+  #dat$O2_spl <- na.spline(dr[[col1]])
+  #dat$CO2_spl <- na.spline(dr[[col2]])
 
   dat$O2_corr <- dat[[col1]] + (20.950 - dat$O2_spl)
   dat$CO2_corr <- (dat[[col2]] - dat$CO2_spl) + 0.065
