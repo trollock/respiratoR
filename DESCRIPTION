@@ -10,3 +10,12 @@ License: What license is it under?
 Encoding: UTF-8
 LazyData: true
 RoxygenNote: 6.1.1
+Depends: 
+  R (>= 3.3.0)
+Imports: 
+  tidyr (>= 1.0.0), 
+  dplyr (>= 0.8.3),
+  zoo (>= 1.8.1),
+  data.table(>= 1.12.1),
+  ggplot2 (>= 3.2.1),
+  cowplot (>= 1.0.0)
